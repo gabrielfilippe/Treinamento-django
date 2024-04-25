@@ -1,9 +1,11 @@
 from django.urls import path
-from app.views import *
+from .views import *
 
+# Define as rotas do projeto
+# Cada rota chama uma função do arquivo views.py
 
 urlpatterns = [
-    path('', home, name='home'),
-    path('livros/', livros, name='livros'),
-    path('cadastro_de_livros/', cadastro_de_livros, name='cadastro_de_livros'),
+    path('', home, name='home'), # Rota para a página inicial (Chama a função home do arquivo views.py)
+    path('livros/', livros, name='livros'), # Rota para a página de livros (Chama a função livros do arquivo views.py)
+    path('cadastro/', cadastro, name='cadastro'), # Rota para a página de cadastro (Chama a função cadastro do arquivo views.py)
 ]

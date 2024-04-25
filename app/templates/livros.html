@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 
+{% block titulo-da-aba %}Livros{% endblock %}
+
 {% block conteudo-da-pagina %}
+
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Titulo</th>
+            <th scope="col">Título</th>
             <th scope="col">Autor</th>
             <th scope="col">Data de publicação</th>
         </tr>
@@ -19,4 +22,5 @@
         {% endfor %}
     </tbody>
 </table>
+
 {% endblock %}

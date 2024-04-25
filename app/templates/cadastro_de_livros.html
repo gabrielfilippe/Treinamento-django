@@ -1,31 +1,31 @@
 {% extends 'base.html' %}
 
+{% block titulo-da-aba %}Cadastro de livros{% endblock %}
+
 {% block conteudo-da-pagina %}
 
 <h1>Cadastro de livros</h1>
 
-<form action="{% url 'cadastro_de_livros' %}" method="post">
-
+<form action="{% url 'cadastro' %}" method="post">
     {% csrf_token %}
     <div class="mb-3">
-        <label for="formGroupExampleInput" class="form-label">Titulo</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite o titulo" name="titulo">
+        <label for="titulo">Título:</label>
+        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Digite o título do livro">
     </div>
     <div class="mb-3">
-        <label for="formGroupExampleInput2" class="form-label">Data de publicação</label>
-        <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Selecione a data"
-            name="data_publicacao">
-    </div>
-    <div class="mb-3">
-        <label for="formGroupExampleInput3" class="form-label">Autor</label>
-        <select class="form-select" aria-label="Default select example" name="autor_id">
-            <option selected>Selecione o autor</option>
+        <label for="autor">Autor:</label>
+        <select name="autor" id="autor" class="form-select">
+            <option value="" selected>Selecione o autor do livro</option>
             {% for autor in autores %}
             <option value="{{ autor.id }}">{{ autor.nome }}</option>
             {% endfor %}
         </select>
     </div>
-    <button type="submit" class="btn btn-success">Cadastrar</button>
+    <div class="mb-3">
+        <label for="data_publicacao">Data de publicação:</label>
+        <input type="date" class="form-control" id="data_publicacao" name="data_publicacao">
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar Livro</button>
 </form>
 
 {% endblock %}

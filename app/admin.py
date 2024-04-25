@@ -1,15 +1,17 @@
 from django.contrib import admin
-from app.models import *
+from .models import *
 
 # Register your models here.
 
-class AutorAdmin(admin.ModelAdmin): #deixando em forma de tabela no admin, deixando bonitin
-    list_display = ('nome', 'sobrenome', 'email')
-    search_fields = ('nome', 'sobrenome')
+# Classe AutorAdmin (Tabela Autor no admin)
+class AutorAdmin(admin.ModelAdmin):
+    list_display = ['nome', 'sobrenome', 'email'] # Mostrando os campos nome, sobrenome e email na visualização da tabela
+    search_fields = ['nome', 'sobrenome'] # Adicionando a opção de busca pelos campos nome e sobrenome
 
-class LivroAdmin(admin.ModelAdmin): #deixando em forma de tabela no admin, deixando bonitin
-    list_display = ('titulo', 'autor', 'data_publicacao')
-    search_fields = ('titulo', 'autor')
+# Classe LivroAdmin (Tabela Livro no admin)
+class LivroAdmin(admin.ModelAdmin):
+    list_display = ['titulo', 'autor', 'data_publicacao'] # Mostrando os campos titulo, autor e data_publicacao na visualização da tabela
+    search_fields = ['titulo', 'autor'] # Adicionando a opção de busca pelos campos titulo e autor
 
-admin.site.register(Autor, AutorAdmin) #registrando o modelo Autor na area de administração
-admin.site.register(Livro, LivroAdmin)
+admin.site.register(Autor, AutorAdmin) # Registrando o modelo Autor no admin
+admin.site.register(Livro, LivroAdmin) # Registrando o modelo Livro no admin
