@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block titulo-da-aba %}Editar livro{% endblock %}
+
+{% block conteudo-da-pagina %}
+
+<h1>Editar livro</h1>
+
+<form action="{% url 'editar' livro.id %}" method="post">
+    {% csrf_token %} <!--tag de segurança -->
+    <div class="mb-3">
+        <label for="titulo">Título:</label>
+        <input type="text" class="form-control" id="titulo" name="titulo" value="{{ livro.titulo }}">
+    </div>
+    <div class="mb-3">
+        <label for="autor">Autor:</label>
+        <select name="autor" id="autor" class="form-select">
+            <option value="" selected>Selecione o autor do livro</option>
+            {% for autor in autores %}
+            <option value="{{ autor.id }}" {% if autor.id == livro.autor.id %}selected{% endif %}>{{ autor.nome }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="data_publicacao">Data de publicação:</label>
+        <input type="date" class="form-control" id="data_publicacao" name="data_publicacao"
+            value="{{ data_publicacao_formatada }}">
+    </div>
+    <div class="mb-3">
+        <label for="valor">Valor:</label>
+        <input type="text" class="form-control" id="valor" name="valor" step="0.01" value="{{ livro.livro_valor }}">
+    </div>
+    <button type="submit" class="btn btn-success">Editar Livro</button>
+</form>
+
+{% endblock %}

@@ -15,7 +15,8 @@ class Autor(models.Model):
 class Livro(models.Model):
     titulo = models.CharField(max_length=255) # Atributo titulo da tabela Livro com tamanho máximo de 255 caracteres
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE) # Atributo autor da tabela Livro do tipo ForeignKey que referencia a tabela Autor
-    data_publicacao = models.DateField() # Atributo data_publicacao da tabela Livro do tipo DateField
+    data_publicacao = models.DateField()
+    livro_valor = models.DecimalField(decimal_places=2, max_digits=4, default=1.99) # Atributo data_publicacao da tabela Livro do tipo DateField
 
     def __str__(self):
         return self.titulo
