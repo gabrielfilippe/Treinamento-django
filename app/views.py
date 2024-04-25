@@ -29,9 +29,10 @@ def cadastro_de_livros(request):
         #Cria um novo livro com os dados recebidos
         livro = Livro.objects.create(
             titulo=titulo,
-            autor=autor_id,
+            autor_id=autor_id,
             data_publicacao=data_publicacao
         )
+        livro.save()
         print(livro)
         return render(request, 'cadastro_de_livros.html')
 

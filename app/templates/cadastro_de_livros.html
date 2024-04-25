@@ -13,12 +13,13 @@
     </div>
     <div class="mb-3">
         <label for="formGroupExampleInput2" class="form-label">Data de publicação</label>
-        <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Selecione a data" name="data_publicacao">
+        <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Selecione a data"
+            name="data_publicacao">
     </div>
     <div class="mb-3">
         <label for="formGroupExampleInput3" class="form-label">Autor</label>
         <select class="form-select" aria-label="Default select example" name="autor_id">
-            <!-- <option selected>Selecione o autor</option> -->
+            <option selected>Selecione o autor</option>
             {% for autor in autores %}
             <option value="{{ autor.id }}">{{ autor.nome }}</option>
             {% endfor %}
