@@ -17,6 +17,7 @@ class Livro(models.Model):
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE) # Atributo autor da tabela Livro do tipo ForeignKey que referencia a tabela Autor
     data_publicacao = models.DateField()
     livro_valor = models.DecimalField(decimal_places=2, max_digits=4, default=1.99) # Atributo data_publicacao da tabela Livro do tipo DateField
+    status = models.BooleanField(default=True) # Atributo status da tabela Livro do tipo BooleanField com valor padrão True
 
     def __str__(self):
         return self.titulo

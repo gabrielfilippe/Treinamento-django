@@ -11,6 +11,7 @@
             <th scope="col">Autor</th>
             <th scope="col">Data de publicação</th>
             <th scope="col">Valor</th>
+            <th scope="col">Status</th>
             <th scope="col">Ações</th>
         </tr>
     </thead>
@@ -21,9 +22,14 @@
             <td>{{ livro.autor }}</td>
             <td>{{ livro.data_publicacao }}</td>
             <td>{{ livro.livro_valor }}</td>
+            <td>{{ livro.status }}</td>
             <td>
-                <a href="{% url 'editar' livro.id %}" class="btn btn-primary">Editar</a>
-                <a href="{% url 'excluir' livro.id %}" class="btn btn-danger">Excluir</a>
+                <a href="{% url 'editar' livro.id %}" class="btn btn-outline-primary">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a href="{% url 'excluir' livro.id %}" class="btn btn-outline-danger">
+                    <i class="fas fa-trash"></i>
+                </a>
             </td>
         </tr>
         {% endfor %}
