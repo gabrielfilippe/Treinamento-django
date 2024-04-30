@@ -18,6 +18,7 @@ class Livro(models.Model):
     data_publicacao = models.DateField()
     livro_valor = models.DecimalField(decimal_places=2, max_digits=4, default=1.99) # Atributo data_publicacao da tabela Livro do tipo DateField
     status = models.BooleanField(default=True) # Atributo status da tabela Livro do tipo BooleanField com valor padrão True
+    imagem = models.ImageField(upload_to='imagens/', null=True, blank=True) # Atributo imagem da tabela Livro do tipo ImageField com upload para a pasta imagens
 
     def __str__(self):
         return self.titulo

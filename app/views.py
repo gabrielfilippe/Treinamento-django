@@ -11,7 +11,12 @@ from .models import *
 # Função home
 def home(request):
     user = request.user # Obtendo o usuário logado
-    context = {'user': user} # Criando um dicionário com o usuário logado para passar para o template
+    livros = Livro.objects.all() # Obtendo todos os livros do banco de dados
+    # Criando um dicionário com o usuário logado para passar para o template
+    context = {
+        'user': user,
+        'livros': livros
+    } 
 
     return render(request, 'home.html', context) # Retornando o template index.html renderizado com o contexto (usuário logado)
 
