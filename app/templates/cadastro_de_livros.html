@@ -6,7 +6,7 @@
 
 <h1>Cadastro de livros</h1>
 
-<form action="{% url 'cadastro' %}" method="post">
+<form action="{% url 'cadastro' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mb-3">
         <label for="titulo">Título:</label>
@@ -28,6 +28,18 @@
     <div class="mb-3">
         <label for="valor">Valor:</label>
         <input type="text" class="form-control" id="valor" name="valor" step="0.01" placeholder="Digite o valor do livro">
+    </div>
+    <div class="mb-3">
+        <label for="status">Status:</label>
+        <select name="status" id="status" class="form-select">
+            <option value="" selected>Selecione o status do livro</option>
+            <option value="1">Disponível</option>
+            <option value="0">Indisponível</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="imagem">Imagem:</label>
+        <input type="file" class="form-control" id="imagem" name="imagem">
     </div>
     <button type="submit" class="btn btn-outline-success">
         <i class="fas fa-plus"></i>  Cadastar

@@ -10,15 +10,15 @@
     <div class="carousel-indicators">
         {% for livro in livros %}
         {% if livro.imagem %}
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter }}" {% if forloop.first %} aria-current="true" {% endif %} aria-label="Slide {{ forloop.counter }}">
-        </button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" 
+        {% if forloop.first %} class="active" {% endif %} aria-label="Slide {{ forloop.counter }}"></button>
         {% endif %}
         {% endfor %}
     </div>
     <div class="carousel-inner">
         {% for livro in livros %}
         {% if livro.imagem %}
-        <div class="carousel-item {% if forloop.first %} active {% endif %}">
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
             <img src="{{ livro.imagem.url }}" class="d-block w-100" alt="{{ livro.titulo }}">
         </div>
         {% endif %}

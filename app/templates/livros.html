@@ -24,7 +24,13 @@
             <td>{{ livro.autor }}</td>
             <td>{{ livro.data_publicacao }}</td>
             <td>{{ livro.livro_valor }}</td>
-            <td>{{ livro.status }}</td>
+            <td>
+                {% if livro.status %}
+                <span class="badge rounded-pill text-bg-success">Disponível</span>
+                {% else %}
+                <span class="badge rounded-pill text-bg-danger">Indisponível</span>
+                {% endif %}
+            </td>
             <td>
                 {% if livro.imagem %}
                 <!-- <a href="{{ MEDIA_URL }}{{ livro.imagem.url }}" target="_blank"></a> -->

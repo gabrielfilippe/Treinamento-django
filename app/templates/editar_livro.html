@@ -6,7 +6,7 @@
 
 <h1>Editar livro</h1>
 
-<form action="{% url 'editar' livro.id %}" method="post">
+<form action="{% url 'editar' livro.id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %} <!--tag de segurança -->
     <div class="mb-3">
         <label for="titulo">Título:</label>
@@ -30,6 +30,26 @@
     <div class="mb-3">
         <label for="valor">Valor:</label>
         <input type="text" class="form-control" id="valor" name="valor" step="0.01" value="{{ livro.livro_valor }}">
+    </div>
+    <div class="mb-3">
+        <label for="status">Status:</label>
+        <select name="status" id="status" class="form-select">
+            <option value="" selected>Selecione o status do livro</option>
+            <option value="1" {% if livro.status %}selected{% endif %}>Disponível</option>
+            <option value="0" {% if not livro.status %}selected{% endif %}>Indisponível</option>
+        </select>
+    </div>
+    {% if livro.imagem %}
+    <div class="mb-3">
+        <label for="imagem">Imagem:</label>
+        <img src="{{ livro.imagem.url }}" alt="{{ livro.titulo }}" style="max-width: 100px;">
+    </div>
+    {% else %}
+    <span class="badge text-bg-danger">Sem imagem</span>
+    {% endif %}
+    <div class="mb-3">
+        <label for="nova_imagem">Nova imagem:</label>
+        <input type="file" class="form-control" id="nova_imagem" name="nova_imagem">
     </div>
     <button type="submit" class="btn btn-success">Editar Livro</button>
 </form>

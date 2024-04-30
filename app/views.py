@@ -42,13 +42,18 @@ def cadastro(request):
         autor_id = request.POST.get('autor')  # Obtendo o ID do autor selecionado no formulário através do atributo 'name' do input
         data_publicacao = request.POST.get('data_publicacao') # Obtendo a data de publicação do livro do formulário através do atributo 'name' do input
         valor = str(request.POST.get('valor')) # Obtendo o valor do livro do formulário através do atributo 'name' do input
+        status = request.POST.get('status') # Obtendo o status do livro do formulário através do atributo 'name' do input
+        imagem = request.FILES.get('imagem') # Obtendo a imagem do livro do formulário através do atributo 'name' do input
     
         # Criando um novo livro com os dados recebidos
         livro = Livro.objects.create(
             titulo=titulo, # Atribuindo o título do livro
             autor_id=autor_id, # Atribuindo o ID do autor
             data_publicacao=data_publicacao, # Atribuindo a data de publicação do livro
-            livro_valor= Decimal(valor.replace(',', '.')) # Atribuindo o valor do livro
+            livro_valor= Decimal(valor.replace(',', '.')), # Atribuindo o valor do livro
+            status=status, # Atribuindo o status do livro
+            imagem=imagem # Atribuindo a imagem do livro
+
 
         )
         livro.save()
@@ -78,11 +83,17 @@ def editar(request, id):
         autor_id = request.POST.get('autor') # Obtendo o ID do autor selecionado no formulário através do atributo 'name' do input
         data_publicacao = request.POST.get('data_publicacao') # Obtendo a data de publicação do livro do formulário através do atributo 'name' do input
         valor = request.POST.get('valor')
+        status = request.POST.get('status') # Obtendo o status do livro do formulário através do atributo 'name' do input
+        imagem = request.FILES.get('nova_imagem') # Obtendo a imagem do livro do formulário através do atributo 'name' do input
+
 
         livro.titulo = titulo # Atribuindo o novo título ao livro
         livro.autor_id = autor_id # Atribuindo o novo ID do autor ao livro
         livro.data_publicacao = data_publicacao # Atribuindo a nova data de publicação ao livro
         livro.livro_valor = Decimal(valor.replace(',', '.')) # Atribuindo o novo valor ao livro
+        livro.status = status
+        if imagem:
+            livro.imagem = imagem
         livro.save() # Salvando as alterações no banco de dados
 
         return redirect('livros') # Redirecionando para a rota livros
